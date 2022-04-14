@@ -36,6 +36,8 @@ const navMenu = [
   },
 ];
 
+const playlists = new Array(50).fill(1).map((_, i) => `Playlist ${i + 1}`);
+
 const musicMenu = [
   {
     name: "Create Playlist",
@@ -114,10 +116,18 @@ const Sidebar = () => {
         </Box>
         <Divider marginY="20px" color="grey.800" />
         {/* Playlist Box */}
-        <Box height="60%" overflowY="auto" paddingY="20px">
-          {new Array(50).fill(1).map(() => (
-            <h1>Hey</h1>
-          ))}
+        <Box height="60%" overflowY="auto">
+          <List spacing={2}>
+            {playlists.map((playlist) => (
+              <ListItem paddingX="20px" key={playlist}>
+                <LinkBox>
+                  <NextLink href="/">
+                    <LinkOverlay>{playlist}</LinkOverlay>
+                  </NextLink>
+                </LinkBox>
+              </ListItem>
+            ))}
+          </List>
         </Box>
       </Box>
     </Box>
