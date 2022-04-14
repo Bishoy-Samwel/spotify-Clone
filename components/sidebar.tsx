@@ -113,6 +113,12 @@ const Sidebar = () => {
           </List>
         </Box>
         <Divider marginY="20px" color="grey.800" />
+        {/* Playlist Box */}
+        <Box height="60%" overflowY="auto" paddingY="20px">
+          {new Array(50).fill(1).map(() => (
+            <h1>Hey</h1>
+          ))}
+        </Box>
       </Box>
     </Box>
   );
