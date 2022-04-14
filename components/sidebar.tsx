@@ -10,7 +10,13 @@ import {
   LinkOverlay,
   LinkBox,
 } from "@chakra-ui/layout";
-import { MdHome, MdSearch, MdLibraryMusic } from "react-icons/md";
+import {
+  MdHome,
+  MdSearch,
+  MdLibraryMusic,
+  MdPlaylistAdd,
+  MdFavorite,
+} from "react-icons/md";
 
 const navMenu = [
   {
@@ -26,12 +32,31 @@ const navMenu = [
   {
     name: "Your Library",
     icon: MdLibraryMusic,
-    route: "/MusicLibrary",
+    route: "/library",
+  },
+];
+
+const musicMenu = [
+  {
+    name: "Create Playlist",
+    icon: MdPlaylistAdd,
+    route: "/",
+  },
+  {
+    name: "Favorites",
+    icon: MdFavorite,
+    route: "/favorites",
+  },
+  {
+    name: "Create Playlist",
+    icon: MdPlaylistAdd,
+    route: "/",
   },
 ];
 
 const Sidebar = () => {
   return (
+    // Main Box
     <Box
       width="100%"
       height="calc(100vh - 100px)"
@@ -39,11 +64,15 @@ const Sidebar = () => {
       paddingX="5px"
       color="gray"
     >
-      <Box paddingY="20px">
+      {/* Container Box */}
+      <Box paddingY="20px" height="100%">
+        {/* Logo Box */}
         <Box width="120px" marginBottom="20px" paddingX="20">
           <NextImage src="/logo.png" height={60} width={120} />
         </Box>
+        {/* Menu Box */}
         <Box marginBottom="20px">
+          {/* NavMenu List */}
           <List spacing={2}>
             {navMenu.map((menu) => (
               <ListItem paddingX="20px" fontSize="16px" key={menu.name}>
@@ -62,8 +91,28 @@ const Sidebar = () => {
               </ListItem>
             ))}
           </List>
-          <Divider paddingY="20px"/>
+          <Divider marginY="20px" color="grey.800" />
+          {/* MusicMenu List */}
+          <List spacing={2}>
+            {musicMenu.map((menu) => (
+              <ListItem paddingX="20px" fontSize="16px" key={menu.name}>
+                <LinkBox>
+                  <NextLink href={menu.route} passHref>
+                    <LinkOverlay>
+                      <ListIcon
+                        as={menu.icon}
+                        color="white"
+                        marginRight="20px"
+                      />
+                      {menu.name}
+                    </LinkOverlay>
+                  </NextLink>
+                </LinkBox>
+              </ListItem>
+            ))}
+          </List>
         </Box>
+        <Divider marginY="20px" color="grey.800" />
       </Box>
     </Box>
   );
