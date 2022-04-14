@@ -48,12 +48,7 @@ const musicMenu = [
     name: "Favorites",
     icon: MdFavorite,
     route: "/favorites",
-  },
-  {
-    name: "Create Playlist",
-    icon: MdPlaylistAdd,
-    route: "/",
-  },
+  }
 ];
 
 const Sidebar = () => {
@@ -116,7 +111,21 @@ const Sidebar = () => {
         </Box>
         <Divider marginY="20px" color="grey.800" />
         {/* Playlist Box */}
-        <Box height="60%" overflowY="auto">
+        <Box
+          height="60%"
+          overflowY="auto"
+          sx={{
+            "&::-webkit-scrollbar": {
+              width: "10px",
+              borderRadius: "8px",
+              backgroundColor: `black`,
+            },
+            "&::-webkit-scrollbar-thumb": {
+              borderRadius: "8px",
+              backgroundColor: "grey",
+            },
+          }}
+        >
           <List spacing={2}>
             {playlists.map((playlist) => (
               <ListItem paddingX="20px" key={playlist}>
