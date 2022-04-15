@@ -32,5 +32,13 @@ model Artist {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
-  songs      Song[]
+  name      String   @unique
+  songs     Song[]
+}
+
+model Playlist {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  name      String
 }
