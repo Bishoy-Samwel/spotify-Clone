@@ -32,6 +32,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     { expiresIn: "8h" }
   );
 
+  res.setHeader(
+    'Set-Cookie', 
+    cookie.serialize('TRAKS_ACESS_TOKEN', token, {
+      httpOnly: true,
+      maxAge: 8 * 60 * 60,
+      path: '/',
+      sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production',
+    })
   )
   res.json(user)
 };
